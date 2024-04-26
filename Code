@@ -1,0 +1,175 @@
+#include <stdio.h>
+#include <math.h>
+#include<string.h>
+void BtoD();void BtoO();void DtoB(); 
+void OtoB();void OtoD();void DtoO();
+void HtoB();
+int main(){
+    printf("...........]NUMBER CONVERSION[.............\n");
+    printf("1.Binary to Decimal\n");
+    printf("2.Binary to Octal\n");
+    printf("3.Octal to Binary\n");
+    printf("4.Octal to Decimal\n");
+    printf("5.Decimal to Binary\n");
+    printf("6.Decimal to Octal\n");
+    printf("7.Hexadecimal to Binary\n");
+    printf("\n");
+    printf("Choose Any number: \a\a\a\a\a\a\a\a\a\a\a");
+   int n;
+   scanf("%d",&n);
+   switch(n)
+   {   
+       case 1:BtoD();break;
+       case 2:BtoO();break;
+       case 3:OtoB();break;
+       case 4:OtoD();break;
+       case 5:DtoB();break;
+       case 6:DtoO();break;
+       case 7:HtoB();break;
+       default: printf("Invalid number");
+   }  
+   int e;
+   printf("\n");
+   printf("\n");
+   printf("\n");
+   printf("\n");
+   printf("\n");
+   printf("1.Continue\n\a\a\a\a\a\a\a\a\a\a");
+   printf("2.exit\n\a\a\a\a\a\a\a\a\a\a");
+   printf("Press 1 or 2: \a\a\a\a\a\a\a\a");
+   scanf("%d",&e);
+   printf("\n");
+   printf("\n");
+   printf("\n");
+   printf("\n");
+   if(e==1) return main();
+   else  return 0;
+}
+
+void BtoD(){
+    long k;int ans=0,c=0;
+    printf("Enter Binary number: \a\a\a\a\a\a\a\a\a\a");
+    scanf("%ld",&k);
+    while(k>0){
+        int rem=k%10;
+        ans=ans+rem*pow(8,c++);
+        k/=10;
+    }
+    printf("Decimal number: %d",ans);
+}
+
+void BtoO(){
+    long k; int r,v,rev=0,ans,c=0;
+     printf("Enter Binary number: \a\a\a\a\a\a\a\a\a\a");
+    scanf("%ld",&k); 
+    while(k>0){
+        int rem=k%10;
+        ans=ans+rem*pow(2,c++);
+        k/=10;
+    } 
+    while(ans>0){
+        r=ans%8;
+        v=(v*10)+r;
+        ans=ans/8;
+    }
+    while(v>0){
+        r=v%10;
+        rev=(rev*10)+r;
+        v/=10;
+    }
+    printf("Octal number: %d",rev);
+}
+
+void DtoO(){
+    int m,v,r,s,rev=0;
+    printf("Enter Decimal number: \a\a\a\a\a\a\a\a\a\a");
+    scanf("%d",&m);
+    while(m>0){
+        r=m%8;
+        v=(v*10)+r;
+        m=m/8;
+    }
+    while(v>0){
+        s=v%10;
+        rev=(rev*10)+s;
+        v/=10;
+    }
+    printf("Octal number: %d",rev);
+} 
+
+void OtoD(){
+    long m;int c=0,res=0,rem;
+    printf("Enter Octal number: \a\a\a\a\a\a\a\a\a\a");
+    scanf("%ld",&m);
+    while(m>0){
+        rem=m%10;
+        res=res+(rem*pow(8,c++));
+        m/=10;
+    }
+    printf("Decimal number: %d",res);
+}
+
+void OtoB(){
+    long m;int c=0,res=0,rem,bin=0,i=1;
+    printf("Enter Octal number: \a\a\a\a\a\a\a\a\a\a");
+    scanf("%ld",&m);
+    while(m>0){
+        rem=m%10;
+        res=res+(rem*pow(8,c++));
+        m/=10;
+    } 
+    while(res!=0){
+        bin=bin+(res%2)*i;
+        res/=2;
+        i*=10;
+    }
+    printf("Binary number: %d",bin);
+}
+
+void DtoB(){
+    long m;int bin=0,i=1;
+    printf("Enter Decimal number: \a\a\a\a\a\a\a\a\a\a");
+    scanf("%ld",&m);
+    while(m!=0){
+        bin=bin+(m%2)*i;
+        m/=2;
+        i*=10;
+    }
+    printf("Binary number: %d",bin);
+}
+
+void HtoB(){
+    char a[255];long i=0;
+    printf("Enter a number: ");
+    scanf("%s",a);
+   for(int i=0;i<strlen(a);i++){
+        if(a[i]>='a'&&a[i]<='z')
+        a[i]=a[i]-32;
+    }
+    for(int i=0;i<strlen(a);i++){
+        switch(a[i])
+      {
+       case '0':printf("0000");break;
+       case '1':printf("0001");break;
+       case '2':printf("0010");break;
+       case '3':printf("0011");break;
+       case '4':printf("0100");break;
+       case '5':printf("0101");break;
+       case '6':printf("0110");break;
+       case '7':printf("0111");break;
+       case '8':printf("1000");break;
+       case '9':printf("1001");break;
+       case 'A':printf("1010");break;
+       case 'B':printf("1011");break;
+       case 'C':printf("1100");break;
+       case 'D':printf("1101");break;
+       case 'E':printf("1110");break;
+       case 'F':printf("1111");break;
+       default:  printf("Invalid number");
+      }
+      
+    }
+}
+
+
+
